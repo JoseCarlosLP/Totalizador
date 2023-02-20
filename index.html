@@ -8,12 +8,21 @@
 </head>
 <body>
     <h1> TOTALIZADOR DE VENTAS </h1>
-    <form id="totalizador-form">
+    <form id="IngresarItems-form">
         <lable for="Cant-items"> Ingrese la cantidad de items: </lable>
         <input type="number" id="cant_items"/>
         <button type="submit" id="btn_mostrar"> Mostrar </button>
     </form>
     <div id="resultado"></div>
+    <p> </p>
+    <form id="IngresarPrecio-form">
+        <lable for="PrecioXitems"> Ingrese el precio por item: </lable>
+        <input type="number" id="precio_item"/>
+        <button type="submit" id="btn_mostrar"> Mostrar </button>
+    </form>
+    <div id="resultado2"></div>
+    <p> </p>
+
     <script src="./src/presenter.js"></script>
 </body>
 </html>
