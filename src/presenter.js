@@ -1,3 +1,5 @@
+import mostrarImpuesto from "./estados";
+
 const cant_items=document.querySelector("#cant_items")
 const precio_item=document.querySelector("#precio_item")
 const estado=document.querySelector("#estado");
@@ -40,7 +42,7 @@ form3.addEventListener("submit",(event)=>{
 function mostrarCantItems()
 {
     ////document.getElementById("cantidad").innerHTML=cant_items.value;
-    document.getElementById("resultado").innerHTML="La cantidad de items ingresados es : <b>" + cant_items.value + "</b>";
+    resultado.innerHTML="La cantidad de items ingresados es : <b>" + cant_items.value + "</b>";
 }
 
 function mostrarPrecioXItem(){
@@ -48,5 +50,5 @@ function mostrarPrecioXItem(){
 }
 
 function mostrarEstado(){
-    resultado3.innerHTML="El estado seleccionado es : <b>"+estado.value+"</b>";
+    resultado3.innerHTML="El estado seleccionado es : <b>"+estado.value+"</b> y tiene un impuesto de: "+ mostrarImpuesto(estado.value)+"%"; 
 }
