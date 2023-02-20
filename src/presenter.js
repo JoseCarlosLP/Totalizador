@@ -1,7 +1,8 @@
 import mostrarImpuesto from "./estados";
 import precioNeto from "./precio_neto";
-import calcularImpuesto from "./impuesto";
+import calcularPorcentaje from "./porcentaje";
 import calcularPrecioTotal from "./precio_total";
+import calcularDescuentos from "./descuentos";
 
 const cant_items=document.querySelector("#cant_items")
 const precio_item=document.querySelector("#precio_item")
@@ -12,12 +13,14 @@ const resultado3=document.getElementById("resultado3");
 const precio_neto=document.getElementById("precio_neto");
 const precio_total=document.getElementById("total");
 const impuesto=document.getElementById("impuesto");
+const descuento=document.getElementById("descuento");
 const form1=document.querySelector("#IngresarItems-form");
 const form2=document.querySelector("#IngresarPrecio-form");
 const form3=document.querySelector("#SeleccionarEstado-form");
 const form4=document.querySelector("#PrecioNeto-form");
 const form5=document.querySelector("#Impuestos-form");
 const form6=document.querySelector("#PrecioTotal-form");
+const form7=document.querySelector("#Descuentos-form");
 
 
 form1.addEventListener("submit",(event)=>{
@@ -58,8 +61,8 @@ form4.addEventListener("submit",(event)=>{
 form5.addEventListener("submit",(event)=>{
     event.preventDefault();
     if(estado.value!="-"){
-        impuesto.innerHTML="Impuesto para "+estado.value+" (%"+mostrarImpuesto(estado.value)+") : $ <b>"+
-        calcularImpuesto(precioNeto(cant_items.value,precio_item.value),mostrarImpuesto(estado.value))+"</b>";
+        impuesto.innerHTML="Impuesto para "+ estado.value +" (%"+mostrarImpuesto(estado.value)+") : $ <b>"+
+        calcularPorcentaje(precioNeto(cant_items.value,precio_item.value),mostrarImpuesto(estado.value))+"</b>";
     }
     else{
         alert("Debe seleccionar un estado para calcular el impuesto");
@@ -68,9 +71,26 @@ form5.addEventListener("submit",(event)=>{
 
 form6.addEventListener("submit",(event)=>{
     event.preventDefault();
+    if(cant_items.value!=0 && precio_item.value!=0 && estado.value != "" ){
+        let precioN=precioNeto(cant_items.value,precio_item.value);
+        let impues=calcularPorcentaje(precioNeto(cant_items.value,precio_item.value),mostrarImpuesto(estado.value));
+        precio_total.innerHTML = calcularPrecioTotal(precioN,impues,0);
+        let TOTAL=calcularPrecioTotal(precioN,impues,0);
+        let desc= calcularPorcentaje(TOTAL,calcularDescuentos(TOTAL))
+        precio_total.innerHTML=calcularPrecioTotal(precioN,impues,desc);
+    }
+    else{
+        alert("No ingreso los datos necesarios para calcular el total, intente nuevamente")
+    }
+})
+
+form7.addEventListener("submit",(event)=>{
+    event.preventDefault();
     let precioN=precioNeto(cant_items.value,precio_item.value);
-    let impues=calcularImpuesto(precioNeto(cant_items.value,precio_item.value),mostrarImpuesto(estado.value));
-    precio_total.innerHTML = calcularPrecioTotal(precioN,impues,0);
+    let impues=calcularPorcentaje(precioNeto(cant_items.value,precio_item.value),mostrarImpuesto(estado.value));
+    let precioTOTAL = calcularPrecioTotal(precioN,impues,0);
+    descuento.innerHTML="Descuento (<b>"+calcularDescuentos(precioTOTAL)+"</b>%) : <b>" + 
+    calcularPorcentaje(precioTOTAL,calcularDescuentos(precioTOTAL))+"</b>";
 })
 
 function mostrarCantItems()
