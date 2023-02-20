@@ -1,5 +1,6 @@
 import mostrarImpuesto from "./estados";
 import precioNeto from "./precio_neto";
+import calcularImpuesto from "./impuesto";
 
 const cant_items=document.querySelector("#cant_items")
 const precio_item=document.querySelector("#precio_item")
@@ -8,10 +9,12 @@ const resultado=document.getElementById("resultado");
 const resultado2=document.getElementById("resultado2");
 const resultado3=document.getElementById("resultado3");
 const precio_neto=document.getElementById("precio_neto");
+const impuestoCA=document.getElementById("ca");
 const form1=document.querySelector("#IngresarItems-form");
 const form2=document.querySelector("#IngresarPrecio-form");
 const form3=document.querySelector("#SeleccionarEstado-form");
 const form4=document.querySelector("#PrecioNeto-form");
+const form5=document.querySelector("#Impuestos-form");
 
 form1.addEventListener("submit",(event)=>{
     event.preventDefault();
@@ -46,6 +49,11 @@ form4.addEventListener("submit",(event)=>{
         precio_neto.innerHTML="("+cant_items.value+"*"+precio_item.value+") : $"+precioNeto(cant_items.value,precio_item.value);
     else
         alert("Debe ingresar valores a los campos para calcular el precio neto");
+})
+
+form5.addEventListener("submit",(event)=>{
+    event.preventDefault();
+    impuestoCA.innerHTML=calcularImpuesto(precioNeto(cant_items.value,precio_item.value),mostrarImpuesto("CA"));
 })
 
 function mostrarCantItems()
