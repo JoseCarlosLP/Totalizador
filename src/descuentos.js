@@ -4,6 +4,7 @@ function calcularDescuentos(total){
     if(total>=3000 && total<7000) return 5;
     if(total>=7000 && total<10000) return 7;
     if(total>=10000 && total<30000) return 10;
+    if(total>=30000) return 15;
 }
 
 export default calcularDescuentos;
