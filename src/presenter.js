@@ -71,7 +71,7 @@ form5.addEventListener("submit",(event)=>{
 
 form6.addEventListener("submit",(event)=>{
     event.preventDefault();
-    if(cant_items.value!=0 && precio_item.value!=0 && estado.value != "" ){
+    if(cant_items.value!=0 && precio_item.value!=0 && estado.value != "-" ){
         let precioN=precioNeto(cant_items.value,precio_item.value);
         let impues=calcularPorcentaje(precioNeto(cant_items.value,precio_item.value),mostrarImpuesto(estado.value));
         precio_total.innerHTML = calcularPrecioTotal(precioN,impues,0);
@@ -86,7 +86,7 @@ form6.addEventListener("submit",(event)=>{
 
 form7.addEventListener("submit",(event)=>{
     event.preventDefault();
-    if(cant_items.value!=0 && precio_item.value!=0 && estado.value != "" ){
+    if(cant_items.value!=0 && precio_item.value!=0 && estado.value != "-" ){
         let precioN=precioNeto(cant_items.value,precio_item.value);
         let impues=calcularPorcentaje(precioNeto(cant_items.value,precio_item.value),mostrarImpuesto(estado.value));
         let precioTOTAL = calcularPrecioTotal(precioN,impues,0);
