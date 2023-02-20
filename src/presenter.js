@@ -75,22 +75,27 @@ form6.addEventListener("submit",(event)=>{
         let precioN=precioNeto(cant_items.value,precio_item.value);
         let impues=calcularPorcentaje(precioNeto(cant_items.value,precio_item.value),mostrarImpuesto(estado.value));
         precio_total.innerHTML = calcularPrecioTotal(precioN,impues,0);
-        let TOTAL=calcularPrecioTotal(precioN,impues,0);
+        let TOTAL=calcularPrecioTotal(precioN,impues,0);s
         let desc= calcularPorcentaje(TOTAL,calcularDescuentos(TOTAL))
         precio_total.innerHTML=calcularPrecioTotal(precioN,impues,desc);
     }
     else{
-        alert("No ingreso los datos necesarios para calcular el total, intente nuevamente")
+        alert("No ingreso los datos necesarios para calcular el total, intente nuevamente");
     }
 })
 
 form7.addEventListener("submit",(event)=>{
     event.preventDefault();
-    let precioN=precioNeto(cant_items.value,precio_item.value);
-    let impues=calcularPorcentaje(precioNeto(cant_items.value,precio_item.value),mostrarImpuesto(estado.value));
-    let precioTOTAL = calcularPrecioTotal(precioN,impues,0);
-    descuento.innerHTML="Descuento (<b>"+calcularDescuentos(precioTOTAL)+"</b>%) : <b>" + 
-    calcularPorcentaje(precioTOTAL,calcularDescuentos(precioTOTAL))+"</b>";
+    if(cant_items.value!=0 && precio_item.value!=0 && estado.value != "" ){
+        let precioN=precioNeto(cant_items.value,precio_item.value);
+        let impues=calcularPorcentaje(precioNeto(cant_items.value,precio_item.value),mostrarImpuesto(estado.value));
+        let precioTOTAL = calcularPrecioTotal(precioN,impues,0);
+        descuento.innerHTML="Descuento (<b>"+calcularDescuentos(precioTOTAL)+"</b>%) : <b>" + 
+        calcularPorcentaje(precioTOTAL,calcularDescuentos(precioTOTAL))+"</b>";
+    }
+    else{
+        alert("No ingreso los datos necesarios para calcular el descuento, intente nuevamente");
+    }
 })
 
 function mostrarCantItems()
