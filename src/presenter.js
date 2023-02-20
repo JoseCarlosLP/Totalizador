@@ -13,6 +13,7 @@ const impuestoCA=document.getElementById("ca");
 const impuestoTX=document.getElementById("tx");
 const impuestoAL=document.getElementById("al");
 const impuestoNV=document.getElementById("nv");
+const impuestoUT=document.getElementById("ut");
 const form1=document.querySelector("#IngresarItems-form");
 const form2=document.querySelector("#IngresarPrecio-form");
 const form3=document.querySelector("#SeleccionarEstado-form");
@@ -60,6 +61,7 @@ form5.addEventListener("submit",(event)=>{
     impuestoTX.innerHTML=calcularImpuesto(precioNeto(cant_items.value,precio_item.value),mostrarImpuesto("TX"));
     impuestoAL.innerHTML=calcularImpuesto(precioNeto(cant_items.value,precio_item.value),mostrarImpuesto("AL"));
     impuestoNV.innerHTML=calcularImpuesto(precioNeto(cant_items.value,precio_item.value),mostrarImpuesto("NV"));
+    impuestoUT.innerHTML=calcularImpuesto(precioNeto(cant_items.value,precio_item.value),mostrarImpuesto("UT"));
 })
 
 function mostrarCantItems()
