@@ -41,44 +41,16 @@
         <button type="submit" id="btn_mostrar"> Calcular </button>
     </form>
     <p> </p>
-    
     <form id="Impuestos-form">
-        <table>
-                <tr>    
-                    <td>
-                        <label>Impuesto para CA (%8.25): $ <b><span id="ca"></span></b></label>
-                    </td>
-                </tr>
-                <tr>  
-                    <td>
-                        <label>Impuesto para TX (%6.25): $ <b><span id="tx"></span></b></label>
-                    </td> 
-                </tr>
-                <tr>  
-                    <td>
-                        <label>Impuesto para AL (%4.00): $ <b><span id="al"></span></b></label>
-                    </td> 
-                </tr>
-                <tr>  
-                    <td>
-                        <label>Impuesto para NV (%8.00): $ <b><span id="nv"></span></b></label>
-                    </td> 
-                </tr>
-                <tr>  
-                    <td>
-                        <label>Impuesto para UT (%6.65): $ <b><span id="ut"></span></b></label>
-                    </td> 
-                </tr>
-        </table>
-        <button type="submit" id="btn_mostrar"> Calcular </button>
-    </form>
-    <!--
-     <form id="PrecioTotal-form">
-        <label for="PrecioTotal">Precio Total: <b><span id="precio_neto"></span></b></label>
-        <button type="submit" id="btn_mostrar"> Calcular </button>
+        <div id="impuesto"></div>
+        <button type="submit" id="btn_mostrar"> Calcular Impuesto </button>
     </form>
     <p> </p>
-    -->
+     <form id="PrecioTotal-form">
+        <label for="PrecioTotal">Precio Total: <b><span id="total"></span></b></label>
+        <button type="submit" id="btn_mostrar"> Calcular Total </button>
+    </form>
+    <p> </p>
    
 
     <script src="./src/presenter.js"></script>
